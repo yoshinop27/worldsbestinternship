@@ -52,8 +52,9 @@ public class Board {
         }
     }
     
-    // change the way row n is deleted
+    // change the way row n is deleted, add a check to make sure input is valid
     public void deleteRow(int n) {
+        if (n >= 0 && n < Constants.BOARD_HEIGHT) return;
         for (int row = n-1; row >= 0; row--) {
             for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
                 well[row+1][col] = well[row][col];
