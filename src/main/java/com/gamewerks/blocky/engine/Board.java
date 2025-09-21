@@ -14,7 +14,7 @@ public class Board {
     }
     // changed to less than instead of <= so it doesnt allow out of bounds
     public boolean isValidPosition(int row, int col) {
-        return row >= 0 && row < well.length && col >= 0 && col <= well[0].length;
+        return row >= 0 && row < well.length && col >= 0 && col < well[0].length;
     }
     
     public boolean collides(Piece p) {
@@ -52,6 +52,7 @@ public class Board {
         }
     }
     
+    // change the writing empty row to row 0
     public void deleteRow(int n) {
         for (int row = 0; row < n - 1; row++) {
             for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
