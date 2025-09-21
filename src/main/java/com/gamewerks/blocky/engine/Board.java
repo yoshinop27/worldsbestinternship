@@ -12,9 +12,9 @@ public class Board {
     public Board() {
         well = new boolean[Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
     }
-    
+    // changed to less than instead of <= so it doesnt allow out of bounds
     public boolean isValidPosition(int row, int col) {
-        return row >= 0 && row <= well.length && col >= 0 && col <= well[0].length;
+        return row >= 0 && row < well.length && col >= 0 && col <= well[0].length;
     }
     
     public boolean collides(Piece p) {
@@ -77,7 +77,7 @@ public class Board {
         }
         return isCompleted;
     }
-    
+     
     public List getCompletedRows() {
         List completedRows = new LinkedList();
         for (int row = 0; row < Constants.BOARD_HEIGHT; row++) {
