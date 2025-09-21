@@ -78,12 +78,13 @@ public class Board {
         }
         return isCompleted;
     }
-     
+    
+    // changed the return type to a list of row indices rather than array of booleans
     public List getCompletedRows() {
         List completedRows = new LinkedList();
         for (int row = 0; row < Constants.BOARD_HEIGHT; row++) {
             if (isCompletedRow(row)) {
-                completedRows.add(well[row]);
+                completedRows.add(row);
             }
         }
         return completedRows;
