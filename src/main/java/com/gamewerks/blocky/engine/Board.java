@@ -52,15 +52,15 @@ public class Board {
         }
     }
     
-    // change the writing empty row to row 0
+    // change the way row n is deleted
     public void deleteRow(int n) {
-        for (int row = 0; row < n - 1; row++) {
+        for (int row = n-1; row >= 0; row--) {
             for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
-                well[row][col] = well[row+1][col];
+                well[row+1][col] = well[row][col];
             }
         }
         for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
-            well[n][col] = false;
+            well[0][col] = false;
         }
     }
     
