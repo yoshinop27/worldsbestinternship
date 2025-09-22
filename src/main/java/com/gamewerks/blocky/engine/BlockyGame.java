@@ -5,6 +5,7 @@ import com.gamewerks.blocky.util.Position;
 
 public class BlockyGame {
     private static final int LOCK_DELAY_LIMIT = 30;
+    private static int index = 0;
     
     private Board board;
     private Piece activePiece;
@@ -22,7 +23,10 @@ public class BlockyGame {
     private void trySpawnBlock() {
         if (activePiece == null) {
             // Change piece to spawn in at top center instead of bottom center
-            activePiece = new Piece(PieceKind.I, new Position(2, Constants.BOARD_WIDTH / 2 - 2));
+            PieceKind pieces[] = PieceKind.values();
+            PieceKind shuffled[] = Shuffle.fy_shuffle(pieces);
+            activePiece = new Piece(shuffled[index], new Position(2, Constants.BOARD_WIDTH / 2 - 2));
+            index = (index + 1) % 7;
             if (board.collides(activePiece)) {
                 System.exit(0);
             }
