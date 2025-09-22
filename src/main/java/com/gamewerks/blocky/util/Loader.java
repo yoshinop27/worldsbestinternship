@@ -8,6 +8,7 @@ import java.util.Scanner;
 import com.gamewerks.blocky.engine.PieceKind;
 
 public class Loader {
+    // fix the looping error
     private static boolean[][] readRotation(Scanner in) {
         boolean[][] rotation = new boolean[4][4];
         for (int row = 3; row >= 0; row--) {
@@ -19,7 +20,7 @@ public class Loader {
         return rotation;
     }
     
-    
+    // add illegal args exception
     public static boolean[][][] loadRotationData(PieceKind piece) throws IOException {
         boolean[][][] data = new boolean[4][][];
         if (piece == null) throw new IllegalArgumentException("PieceKind is null");
