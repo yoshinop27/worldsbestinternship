@@ -49,7 +49,7 @@ public class BlockyPanel extends JPanel {
         for (int row = 0; row < Constants.BOARD_HEIGHT; row++) {
             for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
                 if (well[row][col]) {
-                    g.fillRect(col * BLOCK_SIZE, BLOCK_SIZE * (row + 1), BLOCK_SIZE, BLOCK_SIZE);
+                    g.fillRect(col * BLOCK_SIZE, BLOCK_SIZE * (row-3), BLOCK_SIZE, BLOCK_SIZE);
                 }
             }
         }

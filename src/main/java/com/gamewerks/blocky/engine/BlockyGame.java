@@ -21,7 +21,8 @@ public class BlockyGame {
     
     private void trySpawnBlock() {
         if (activePiece == null) {
-            activePiece = new Piece(PieceKind.I, new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
+            // Change piece to spawn in at top center instead of bottom center
+            activePiece = new Piece(PieceKind.I, new Position(2, Constants.BOARD_WIDTH / 2 - 2));
             if (board.collides(activePiece)) {
                 System.exit(0);
             }
@@ -49,7 +50,7 @@ public class BlockyGame {
     }
     
     private void processGravity() {
-        Position nextPos = activePiece.getPosition().add(-1, 0);
+        Position nextPos = activePiece.getPosition().add(1, 0);
         if (!board.collides(activePiece.getLayout(), nextPos)) {
             lockCounter = 0;
             activePiece.moveTo(nextPos);
@@ -70,7 +71,7 @@ public class BlockyGame {
     
     public void step() {
         trySpawnBlock();
-        //processMovement();
+        processMovement();
         processGravity();
         processClearedLines();
     }
