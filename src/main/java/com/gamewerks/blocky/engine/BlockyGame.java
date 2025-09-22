@@ -39,7 +39,7 @@ public class BlockyGame {
             break;
         case RIGHT:
             nextPos = activePiece.getPosition().add(0, 1);
-            // There should be a break here as well.
+            break;
         default:
             throw new IllegalStateException("Unrecognized direction: " + movement.name());
         }
