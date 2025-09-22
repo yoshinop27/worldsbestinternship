@@ -17,7 +17,8 @@ public class Board {
         return row >= 0 && row < well.length && col >= 0 && col < well[0].length;
     }
     
-    public boolean collides(Piece p) {
+    public boolean collides(Piece p) throws IllegalArgumentException {
+        if (p == null) throw new IllegalArgumentException("Piece is null");
         return collides(p.getLayout(), p.getPosition());
     }
     
@@ -39,6 +40,7 @@ public class Board {
     }
     
     public void addToWell(Piece p) {
+        if (p == null) throw new IllegalArgumentException("Piece is null");
         boolean[][] layout = p.getLayout();
         Position pos = p.getPosition();
         for (int row = 0; row < layout.length; row++) {
@@ -54,7 +56,7 @@ public class Board {
     
     // change the way row n is deleted, add a check to make sure input is valid
     public void deleteRow(int n) {
-        if (n >= 0 && n < Constants.BOARD_HEIGHT) return;
+        if (n < 0 || n > Constants.BOARD_HEIGHT) return;
         for (int row = n-1; row >= 0; row--) {
             for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
                 well[row+1][col] = well[row][col];
